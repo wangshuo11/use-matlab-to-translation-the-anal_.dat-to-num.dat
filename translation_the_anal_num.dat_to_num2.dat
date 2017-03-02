@@ -1,0 +1,27 @@
+close all;
+clear all;
+clc
+for i=0:4380
+    inputpath='F:\\anal\\anal_';
+    str_i=int2str(i);
+    inputpath=strcat(inputpath,str_i);
+    inputpath=strcat(inputpath,'.dat');
+    fid=fopen(inputpath,'rb');
+    I0=fread(fid,7808,'float32');
+    fclose(fid);
+    outputpath='F:\\anal_.dat_to_.dat\\';
+    outputpath=strcat(outputpath,str_i);
+    outputpath=strcat(outputpath,'.dat');
+    fid2=fopen(outputpath,'wb');
+    fwrite(fid2,I0,'float32');
+    fclose(fid2);
+%    % fid3=fopen(outputpath,'rb');
+%     I1=fread(fid3,7808,'float32');
+%     I0=reshape(I0,128,61);
+%     I1=reshape(I1,128,61);
+%     subplot(5,6,2*i-1);
+%     imshow(I0);
+%     subplot(5,6,2*i);
+%     imshow(I1)
+%     fclose(fid3);%
+end
